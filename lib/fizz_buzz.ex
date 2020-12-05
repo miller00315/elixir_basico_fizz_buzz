@@ -9,14 +9,17 @@ defmodule FizzBuzz do
   # defp funções privadas
   defp handle_file_read({:ok, result}) do
     # "1,2,3,4" -> [1,2,3,4]
-    result
-    # O pipeOperator passa o valor acima como parametro para a função abaixo de modo implicito, o segundo argumento ainda precisa ser passado
-    |> String.split(",")
-    # Quando apenas um parametro passado direto posso utiliza o & e o passadar a aridade(qunatidade de parâmetros)
-    |> Enum.map(&convert_and_evaluate_number/1)
+    result =
+      result
+      # O pipeOperator passa o valor acima como parametro para a função abaixo de modo implicito, o segundo argumento ainda precisa ser passado
+      |> String.split(",")
+      # Quando apenas um parametro passado direto posso utiliza o & e o passadar a aridade(qunatidade de parâmetros)
+      |> Enum.map(&convert_and_evaluate_number/1)
+
+    {:ok, result}
   end
 
-  defp handle_file_read({:error, reason}), do: "Erro read the file #{reason}"
+  defp handle_file_read({:error, reason}), do: {:error, "Erro read the file #{reason}"}
 
   defp convert_and_evaluate_number(number) do
     number
