@@ -18,7 +18,8 @@ defmodule FizzBuzz do
   def handle_file_read({:error, reason}), do: "Erro read the file #{reason}"
 
   def convert_and_evaluate_number(number) do
-    String.to_integer(number)
+    number
+    |> String.to_integer()
     |> evaluate_number()
   end
 
