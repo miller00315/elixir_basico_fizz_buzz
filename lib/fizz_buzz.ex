@@ -6,7 +6,8 @@ defmodule FizzBuzz do
     |> handle_file_read()
   end
 
-  def handle_file_read({:ok, result}) do
+  # defp funções privadas
+  defp handle_file_read({:ok, result}) do
     # "1,2,3,4" -> [1,2,3,4]
     result
     # O pipeOperator passa o valor acima como parametro para a função abaixo de modo implicito, o segundo argumento ainda precisa ser passado
@@ -15,16 +16,16 @@ defmodule FizzBuzz do
     |> Enum.map(&convert_and_evaluate_number/1)
   end
 
-  def handle_file_read({:error, reason}), do: "Erro read the file #{reason}"
+  defp handle_file_read({:error, reason}), do: "Erro read the file #{reason}"
 
-  def convert_and_evaluate_number(number) do
+  defp convert_and_evaluate_number(number) do
     number
     |> String.to_integer()
     |> evaluate_number()
   end
 
-  def evaluate_number(number) when rem(number, 5) == 0 and rem(number, 3) == 0, do: :fizzBuzz
-  def evaluate_number(number) when rem(number, 3) == 0, do: :fizz
-  def evaluate_number(number) when rem(number, 5) == 0, do: :buzz
-  def evaluate_number(number), do: number
+  defp evaluate_number(number) when rem(number, 5) == 0 and rem(number, 3) == 0, do: :fizzBuzz
+  defp evaluate_number(number) when rem(number, 3) == 0, do: :fizz
+  defp evaluate_number(number) when rem(number, 5) == 0, do: :buzz
+  defp evaluate_number(number), do: number
 end
