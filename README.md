@@ -1,6 +1,6 @@
 # FizzBuzz
 
-**TODO: Add description**
+**Projeto desenvolvido em elixir para estudos de seu funcionamento**
 
 ## Installation
 
