@@ -12,8 +12,18 @@ defmodule FizzBuzz do
     # O pipeOperator passa o valor acima como parametro para a função abaixo de modo implicito, o segundo argumento ainda precisa ser passado
     |> String.split(",")
     # Quando apenas um parametro passado direto posso utiliza o & e o passadar a aridade(qunatidade de parâmetros)
-    |> Enum.map(&String.to_integer/1)
+    |> Enum.map(&convert_and_evaluate_number/1)
   end
 
   def handle_file_read({:error, reason}), do: "Erro read the file #{reason}"
+
+  def convert_and_evaluate_number(number) do
+    String.to_integer(number)
+    |> evaluate_number()
+  end
+
+  def evaluate_number(number) when rem(number, 5) == 0 and rem(number, 3) == 0, do: :fizzBuzz
+  def evaluate_number(number) when rem(number, 3) == 0, do: :fizz
+  def evaluate_number(number) when rem(number, 5) == 0, do: :buzz
+  def evaluate_number(number), do: number
 end
