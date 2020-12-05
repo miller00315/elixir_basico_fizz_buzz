@@ -16,6 +16,7 @@ defmodule FizzBuzz do
       # Quando apenas um parametro passado direto posso utiliza o & e o passadar a aridade(qunatidade de parâmetros)
       |> Enum.map(&convert_and_evaluate_number/1)
 
+    # Retorna uma tupla com o sucesso e o valor
     {:ok, result}
   end
 
